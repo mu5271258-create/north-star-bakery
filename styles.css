@@ -33,7 +33,14 @@ nav {
     gap: 25px;
     padding: 15px;
 }
-
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
 nav a {
     color: #2F2A26;
     text-decoration: none;
