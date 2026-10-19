@@ -76,13 +76,21 @@
         </figcaption>
       </figure>
     </section>
+    <section id="favourite-section">
+  <h2>Choose Your Bakery Favourite</h2>
 
-  </main>
+  <p>Select your favourite North Star Bakery product. We will remember your choice when you return.</p>
 
-  <footer>
-    <p>&copy; North Star Bakery</p>
-  </footer>
+  <label for="bakeryFavourite">Favourite product:</label>
 
-</body>
+  <select id="bakeryFavourite">
+    <option value="Fresh Bread">Fresh Bread</option>
+    <option value="Pastries">Pastries</option>
+    <option value="Cakes">Cakes</option>
+  </select>
 
-</html>
+  <button type="button" id="saveFavourite">Save My Favourite</button>
+
+  <p id="favouriteResult" aria-live="polite"></p>
+</section>
+<script src="script.js"></script>
