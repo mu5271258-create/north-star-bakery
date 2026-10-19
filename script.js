@@ -20,7 +20,6 @@ const customerPreferences = {
   defaultItem: "Fresh Bread"
 };
 
-// Display the customer's selected bakery favourite
 function showFavourite() {
   const select = document.getElementById("bakeryFavourite");
   const result = document.getElementById("favouriteResult");
@@ -30,15 +29,21 @@ function showFavourite() {
   }
 
   const selectedItem = select.value;
-  const item = bakeryItems.find(product => product.name === selectedItem);
+  const item = bakeryItems.find(function (product) {
+    return product.name === selectedItem;
+  });
 
   if (item) {
-    result.textContent = "Your favourite: " + item.name + ". " + item.message;
-    localStorage.setItem(customerPreferences.storageKey, selectedItem);
+    result.textContent =
+      "Your favourite: " + item.name + ". " + item.message;
+
+    localStorage.setItem(
+      customerPreferences.storageKey,
+      selectedItem
+    );
   }
 }
 
-// Restore the saved favourite after refreshing the page
 function loadFavourite() {
   const select = document.getElementById("bakeryFavourite");
 
@@ -54,7 +59,6 @@ function loadFavourite() {
   showFavourite();
 }
 
-// Show an error beside a form field
 function showError(elementId, message) {
   const errorElement = document.getElementById(elementId);
 
@@ -63,7 +67,6 @@ function showError(elementId, message) {
   }
 }
 
-// Validate the contact form
 function validateContactForm(event) {
   event.preventDefault();
 
@@ -82,7 +85,10 @@ function validateContactForm(event) {
   showError("messageError", "");
 
   if (name.value.trim().length < 2) {
-    showError("nameError", "Please enter at least 2 characters for your name.");
+    showError(
+      "nameError",
+      "Please enter at least 2 characters for your name."
+    );
     isValid = false;
   }
 
@@ -91,13 +97,18 @@ function validateContactForm(event) {
     !email.value.includes("@") ||
     !email.value.includes(".")
   ) {
-    showError("emailError", "Please enter a valid email address.");
+    showError(
+      "emailError",
+      "Please enter a valid email address."
+    );
     isValid = false;
   }
 
   if (message.value.trim().length < 10) {
-    showError("messageError", "Please enter a message
-              of at least 10 characters.");
+    showError(
+      "messageError",
+      "Please enter a message of at least 10 characters."
+    );
     isValid = false;
   }
 
@@ -109,19 +120,26 @@ function validateContactForm(event) {
   }
 }
 
-// Start the interactive features
 document.addEventListener("DOMContentLoaded", function () {
   loadFavourite();
 
-  const favouriteButton = document.getElementById("saveFavourite");
+  const favouriteButton =
+    document.getElementById("saveFavourite");
 
   if (favouriteButton) {
-    favouriteButton.addEventListener("click", showFavourite);
+    favouriteButton.addEventListener(
+      "click",
+      showFavourite
+    );
   }
 
-  const contactForm = document.getElementById("contactForm");
+  const contactForm =
+    document.getElementById("contactForm");
 
   if (contactForm) {
-    contactForm.addEventListener("submit", validateContactForm);
+    contactForm.addEventListener(
+      "submit",
+      validateContactForm
+    );
   }
 });
