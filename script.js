@@ -97,3 +97,31 @@ function validateContactForm(event) {
 
   if (message.value.trim().length < 10) {
     showError("messageError", "Please enter a message
+              of at least 10 characters.");
+    isValid = false;
+  }
+
+  const formStatus = document.getElementById("formStatus");
+
+  if (isValid && formStatus) {
+    formStatus.textContent =
+      "Thank you! Your message has passed validation successfully.";
+  }
+}
+
+// Start the interactive features
+document.addEventListener("DOMContentLoaded", function () {
+  loadFavourite();
+
+  const favouriteButton = document.getElementById("saveFavourite");
+
+  if (favouriteButton) {
+    favouriteButton.addEventListener("click", showFavourite);
+  }
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", validateContactForm);
+  }
+});
